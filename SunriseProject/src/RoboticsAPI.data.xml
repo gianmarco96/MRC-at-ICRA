@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RoboticsAPIData version="3">
+    <world>
+        <gravitation x="0.0" y="0.0" z="9.81"/>
+    </world>
+    <processDataContainer>
+        <processData dataType="java.lang.String" defaultValue="iiwa" displayName="Robot Name" editableOnHmi="true" id="robot_name" value="iiwa"/>
+        <processData dataType="java.lang.String" defaultValue="172.31.1.150" displayName="ROS Master IP" editableOnHmi="true" id="master_ip" value="172.31.1.150"/>
+        <processData dataType="java.lang.String" defaultValue="11311" displayName="ROS Master Port" editableOnHmi="false" id="master_port" value="11311"/>
+        <processData dataType="java.lang.String" defaultValue="172.31.1.147" displayName="Robot IP" editableOnHmi="false" id="robot_ip" value="172.31.1.147" visibleOnHmi="false"/>
+        <processData dataType="java.lang.Boolean" defaultValue="false" displayName="Enable NTP" editableOnHmi="true" id="ntp" value="false"/>
+        <processData dataType="java.lang.Boolean" defaultValue="false" displayName="Enable Debug Output" editableOnHmi="true" id="debug" value="false"/>
+    </processDataContainer>
+</RoboticsAPIData>
