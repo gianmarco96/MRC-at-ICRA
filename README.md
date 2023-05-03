@@ -7,5 +7,10 @@
 2. Grippers
 # software requirements
 ROS melodic
+open cv
 openni
+real_sense
 iiwa_stack
+
+
+
