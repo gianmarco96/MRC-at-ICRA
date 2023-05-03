@@ -14,6 +14,6 @@ iiwa_stack
 
 
 https://gist.github.com/madelinegannon/c212dbf24fc42c1f36776342754d81bc
-but do not install k4a-tools
+but install k4a-tools=1.3.0
 
 VS code teams
