@@ -13,4 +13,7 @@ real_sense
 iiwa_stack
 
 
+https://gist.github.com/madelinegannon/c212dbf24fc42c1f36776342754d81bc
+but do not install k4a-tools
+
 
