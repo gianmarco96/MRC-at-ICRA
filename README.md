@@ -19,3 +19,7 @@ but install k4a-tools=1.3.0
 VS code teams
 
 find_object_2d?
+
+
+
+[Set up your Ubuntu Machine](docs/MachineSetup)
