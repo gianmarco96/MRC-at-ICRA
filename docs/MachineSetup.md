@@ -58,3 +58,65 @@ To test the depth image, click on Add again, and select DepthCloud. A new DepthC
 ![alt text](img/RvizDepthCloud.png)
 
 ### Microsoft Azure Kinect
+
+### Install the Find Object Package
+To install the package run the following 
+```
+sudo apt install ros-melodic-find-object-2d
+```
+You are done with the installation. Before launching the application you need to check the model of the camera your using. By default, the application subscribes to the '/camera/rgb/image_rect_color' for the rgb image,  '/camera/depth_registered/image_raw' for the depth image and  '/camera/rgb/camera_info' for the camera metadata. Each camera driver uses a slightly different naming for their topics so you will have to remap to the correct one. To see which one is the correct topic, launch the camera driver first then check the avalible topics with 'rostopic list' and note down the name of the topic. Below, you can find an example with the Xtion Pro Camera drive
+```
+# First we launch the camera driver
+roslaunch realsense2_camera rs_camera.launch device_type:=d435i
+# Then we open a new terminal and check the available topics
+rostopic list
+``` 
+You will get something similar to this: 
+```
+/camera/color/camera_info
+/camera/color/image_raw
+/camera/color/image_raw/compressed
+/camera/color/image_raw/compressed/parameter_descriptions
+/camera/color/image_raw/compressed/parameter_updates
+/camera/color/image_raw/compressedDepth
+/camera/color/image_raw/compressedDepth/parameter_descriptions
+/camera/color/image_raw/compressedDepth/parameter_updates
+/camera/color/image_raw/theora
+/camera/color/image_raw/theora/parameter_descriptions
+/camera/color/image_raw/theora/parameter_updates
+/camera/color/metadata
+/camera/depth/camera_info
+/camera/depth/image_rect_raw
+/camera/depth/image_rect_raw/compressed
+/camera/depth/image_rect_raw/compressed/parameter_descriptions
+/camera/depth/image_rect_raw/compressed/parameter_updates
+/camera/depth/image_rect_raw/compressedDepth
+/camera/depth/image_rect_raw/compressedDepth/parameter_descriptions
+/camera/depth/image_rect_raw/compressedDepth/parameter_updates
+/camera/depth/image_rect_raw/theora
+/camera/depth/image_rect_raw/theora/parameter_descriptions
+/camera/depth/image_rect_raw/theora/parameter_updates
+/camera/depth/metadata
+/camera/extrinsics/depth_to_color
+/camera/motion_module/parameter_descriptions
+/camera/motion_module/parameter_updates
+/camera/realsense2_camera_manager/bond
+/camera/rgb_camera/auto_exposure_roi/parameter_descriptions
+/camera/rgb_camera/auto_exposure_roi/parameter_updates
+/camera/rgb_camera/parameter_descriptions
+/camera/rgb_camera/parameter_updates
+/camera/stereo_module/auto_exposure_roi/parameter_descriptions
+/camera/stereo_module/auto_exposure_roi/parameter_updates
+/camera/stereo_module/parameter_descriptions
+/camera/stereo_module/parameter_updates
+/diagnostics
+/rosout
+/rosout_agg
+/tf
+/tf_static
+```
+So you should run the following command:
+```
+roslaunch find_object_2d find_object_3d.launch rgb_topic:=/camera/color/image_raw depth_topic:=/camera/depth/image_rect_raw camera_info_topic:=/camera/depth/camera_info
+```
+ More info on how to use the find_object_2d package can be found [here](http://wiki.ros.org/find_object_2d)
