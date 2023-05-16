@@ -1,11 +1,78 @@
 # Set up of Ubuntu 18 machine
-This set of instructions will guide you to set up your Ubuntu 18 machine for the Manufacturing Robotics Challenge.
-- Install ROS
-- Clone and build the iiwa-stack ROS library
-- Install the camera drivers
-- Install the find-object package
+This set of instructions will guide you to set up your Ubuntu 18 machine for the Manufacturing Robotics Challenge. The main steps to follow are shown below:
+- [Install ROS melodic](#install-ros)
+- [Install VS code](#install-vs-code)
+- [Clone and build the iiwa-stack ROS library](#clone-and-build-the-iiwa-stack)
+- [Install the camera drivers](#install-the-camera-drivers)
+- [Install the find-object package](#install-the-find-object-package)
 ## Install ROS
 You first need to install ROS melodic. [Follow these instructions to do so](http://wiki.ros.org/melodic/Installation/Ubuntu).
+
+## Install VS Code
+To install Visual Studio Code on your Ubuntu system, follow these steps:
+
+First, update the packages index and install the dependencies by typing:
+```
+sudo apt update
+sudo apt install gnupg2 software-properties-common apt-transport-https wget
+```
+Next, import the Microsoft GPG key using the following wget command :
+```
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+```
+And enable the Visual Studio Code repository by typing:
+```
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+```
+Once the apt repository is enabled , install the latest version of Visual Studio Code with:
+```
+sudo apt update
+sudo apt install code
+```
+That’s it. Visual Studio Code has been installed on your Ubuntu desktop and you can start using it.
+
+### Install Live Share
+In order to aid collaboration within the team we suggest installing the Live Share extension. Open VS Code, by typing `code` in a terminal, click on the extension icon, and in the search bar type Live Share. Locate it in the list of results and click the install button on the right corner. 
+
+More information on how to use LiveShare can be found [here](https://code.visualstudio.com/learn/collaboration/live-share)
+
+## Clone and build the iiwa-stack
+In order to control the robots with ROS we need to install the ROS drivers. We will be using 4 KUKA iiwa and there are several ROS packages that allow to control them. We will be using a modified version of the [iiwa-stack](https://github.com/IFL-CAMP/iiwa_stack)
+You first need to create a workspace. You can use your own if you have one, but we reccomend using a new one to avoid conflicts. First create a new folder:
+```
+mkdir -p mrc_icra_ws/src
+```
+Then we need to initialise the workspace:
+```
+cd ~/mrc_icra_ws
+catkin_init_workspace 
+```
+Now go to the src folder and clone the challenge repo:
+```
+cd ~/mrc_icra_ws/src
+git clone https://github.com/gianmarco96/MRC-at-ICRA
+```
+This is optional but we would suggest removing the unnecessary files:
+```
+mv MRC-at-ICRA/iiwa_stack-master/ .
+rm -fr MRC-at-ICRA/
+```
+Now you can build the worksapce
+```
+cd ~/mrc_icra_ws
+rosdep install --from-paths src --ignore-src -r -y
+catkin build
+```
+If you get the error `catkin: command not found`, it just means you have not installed the catkin tools yet. You can do so by `sudo apt install ros-melodic-catkin python-catkin-tools`. Then you should be able to run the `catkin build` command.
+Don't forget to 'activate' the build you need to source the workspace every time you open a new terminal
+```
+source devel/setup.bash
+```
+**Note:** If you do not want to source the environment every time you can add the following line to the .bashrc. Simply copy-paste the below to a terminal window
+```
+echo 'source ~/mrc_icra_ws/devel/setup.bash' >> ~/.bashrc
+``` 
+
 ## Install the camera drivers
 There are 3 cameras that will be used during this challenge. Each group will be using only one type, so you might want to wait until you know which camera has been assigned to you before you carry on with this setup.
 - [ASUS Xtion Pro](#asus-xtion-pro)
@@ -59,7 +126,7 @@ To test the depth image, click on Add again, and select DepthCloud. A new DepthC
 
 ### Microsoft Azure Kinect
 
-### Install the Find Object Package
+## Install the Find Object Package
 To install the package run the following 
 ```
 sudo apt install ros-melodic-find-object-2d
