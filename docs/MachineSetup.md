@@ -125,7 +125,75 @@ To test the depth image, click on Add again, and select DepthCloud. A new DepthC
 ![alt text](img/RvizDepthCloud.png)
 
 ### Microsoft Azure Kinect
+This one takes a bit longer to install and set up so please follow these instructions carefully. You first need to install the Azure Kinect SDK. These instructions assume you are using an AMD64 system (which is quite likely), if you are using a different system please refer to the official [Microsoft Installation Guide](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md#debian-package). To check your system is an AMD64 simply run 'lscpu' and make sure your CPU op-mode include 64-bit. Now you can run the following commands on a new terminal (tip: you can press Ctrl + Alt + T) 
+```
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo apt-add-repository https://packages.microsoft.com/ubuntu/18.04/prod
+sudo apt update
+```
+If you get this error `N: Skipping acquire of configured file 'main/binary-i386/Packages' as repository 'https://packages.microsoft.com/ubuntu/18.04/prod' doesn't support support architecture 'i386'` it means you need specify the architecture of the repository to [arch=amd64]:
+Log in as root:
+```
+sudo -i
+```
+Modify /etc/apt/sources.list. At the bottom of the file, change from:
+```
+deb https://packages.microsoft.com/ubuntu/18.04/prod bionic main
+# deb-src https://packages.microsoft.com/ubuntu/18.04/prod bionic main
+```
+to:
+```
+deb [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main
+# deb-src [arch=amd64] https://packages.microsoft.com/ubuntu/18.04/prod bionic main
+```
+and save.
+Log out of root:
+```
+exit
+```
+Rerun `sudo apt update`
+Now you can install the Kinect packages 
+```
+sudo apt install libk4a1.3-dev
+sudo apt install k4a-tools=1.3.0
+```
+Now we need to set up the udev rules. Create a 
+```
+cd /etc/udev/rules.d/
+sudo touch 99-k4a.rules
+```
+Open the file in VS code
+```
+code 99-k4a.rules
+```
+and copy-paste this code:
+```
+# Bus 002 Device 116: ID 045e:097a Microsoft Corp.  - Generic Superspeed USB Hub
+# Bus 001 Device 015: ID 045e:097b Microsoft Corp.  - Generic USB Hub
+# Bus 002 Device 118: ID 045e:097c Microsoft Corp.  - Azure Kinect Depth Camera
+# Bus 002 Device 117: ID 045e:097d Microsoft Corp.  - Azure Kinect 4K Camera
+# Bus 001 Device 016: ID 045e:097e Microsoft Corp.  - Azure Kinect Microphone Array
 
+BUS!="usb", ACTION!="add", SUBSYSTEM!=="usb_device", GOTO="k4a_logic_rules_end"
+
+ATTRS{idVendor}=="045e", ATTRS{idProduct}=="097a", MODE="0666", GROUP="plugdev"
+ATTRS{idVendor}=="045e", ATTRS{idProduct}=="097b", MODE="0666", GROUP="plugdev"
+ATTRS{idVendor}=="045e", ATTRS{idProduct}=="097c", MODE="0666", GROUP="plugdev"
+ATTRS{idVendor}=="045e", ATTRS{idProduct}=="097d", MODE="0666", GROUP="plugdev"
+ATTRS{idVendor}=="045e", ATTRS{idProduct}=="097e", MODE="0666", GROUP="plugdev"
+
+LABEL="k4a_logic_rules_end"
+```
+Save and exit. 
+
+You are finally ready to install the ROS drivers. The easiest way is to clone the source file into your ROS workspace and build.
+```
+cd ~/mrc_icra_ws/src
+git clone https://github.com/microsoft/Azure_Kinect_ROS_Driver
+cd ..
+catkin build
+```
+Don't forget to source the workspace `source ~/mrc_icra_ws/devel/setup.bash`.
 ## Install the Find Object Package
 To install the package run the following 
 ```
@@ -186,4 +254,4 @@ So you should run the following command:
 ```
 roslaunch find_object_2d find_object_3d.launch rgb_topic:=/camera/color/image_raw depth_topic:=/camera/depth/image_rect_raw camera_info_topic:=/camera/depth/camera_info
 ```
- More info on how to use the find_object_2d package can be found [here](http://wiki.ros.org/find_object_2d)
+More info on how to use the find_object_2d package can be found [here](http://wiki.ros.org/find_object_2d)
