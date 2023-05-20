@@ -136,7 +136,7 @@ Log in as root:
 ```
 sudo -i
 ```
-Modify /etc/apt/sources.list. At the bottom of the file, change from:
+Modify /etc/apt/sources.list. You can use nano, vim, vs code or any other IDE. At the bottom of the file, change from:
 ```
 deb https://packages.microsoft.com/ubuntu/18.04/prod bionic main
 # deb-src https://packages.microsoft.com/ubuntu/18.04/prod bionic main
@@ -154,8 +154,9 @@ exit
 Rerun `sudo apt update`
 Now you can install the Kinect packages 
 ```
-sudo apt install libk4a1.3-dev
+
 sudo apt install k4a-tools=1.3.0
+sudo apt install libk4a1.3-dev
 ```
 Now we need to set up the udev rules. Create a 
 ```
