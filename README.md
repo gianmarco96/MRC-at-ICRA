@@ -21,12 +21,12 @@ All teams are required to exhibit fair play and cooperative conduct throughout t
 - Refraining from engaging in cheating, such as pretending to have autonomous behavior when it does not exist or manually building the towers by hand when the organisers are not watching
 - Forcing other team's towers to collapse
 - Behaving appropriately and maintaining respectful interactions with other teams and participants.
-Failure to adhere to these guidelines will result in penalties, including negative scores and potential disqualification from a specific test or even from the entire competition
+Failure to adhere to these guidelines will result in penalties, including negative scores and potential disqualification from the entire competition
 
 ## Technical Rules 
 - Before using the robots the Risk Assessment needs to be signed and agreed by everyone. Robots can be dangerous and cause injuries so please carefully follow the instructions of the organisers.
-- Care must be taken when controlling the robots. The robots will be slowed down to reduce the risk of collision. Collisions which could have been avoided will results in the team being disqualified from the competition. 
-- ROS shall be used to control the robots and gripper. Instructions will be provided on the day on how to control the robots and grippers. However, if you have never used ROS before, you might find this resources useful.
+- Care must be taken when controlling the robots. The robots will be slowed down to reduce the risk of collision. Collisions which could have been avoided will result in the team being disqualified from the competition. 
+- ROS shall be used to control the robots, grippers, and cameras. Instructions will be provided on the day on how to control the robots and grippers. However, if you have never used ROS before, you might find this resources useful.
   - [ROS Basics Tutorial](https://www.youtube.com/watch?v=Qk4vLFhvfbI&list=PLLSegLrePWgIbIrA4iehUQ-impvIXdd9Q)
   - [Moveit! Tutorial - python](http://docs.ros.org/en/melodic/api/moveit_tutorials/html/doc/move_group_python_interface/move_group_python_interface_tutorial.html)
 - You can use any language supported by ROS but we reccomend using python as it requires the least amount of setting up
