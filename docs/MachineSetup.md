@@ -72,6 +72,10 @@ source devel/setup.bash
 ```
 echo 'source ~/mrc_icra_ws/devel/setup.bash' >> ~/.bashrc
 ``` 
+Finally, you need to install the moveit_commader package which will allow you to control the robot in ROS with python
+```
+sudo apt install ros-melodic-moveit-commander
+```
 
 ## Install the camera drivers
 There are 3 cameras that will be used during this challenge. Each group will be using only one type, so you might want to wait until you know which camera has been assigned to you before you carry on with this setup.

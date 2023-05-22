@@ -19,17 +19,28 @@ sculpture score. The scores are assigned according to the artistic value and str
 # Fair Play
 All teams are required to exhibit fair play and cooperative conduct throughout the entire competition. This encompasses the following expectations:
 - Refraining from engaging in cheating, such as pretending to have autonomous behavior when it does not exist or manually building the towers by hand when the organisers are not watching
-- Forcing other team's towers to collapse
+- Refraining from forcing or causing other teams' towers to collapse
 - Behaving appropriately and maintaining respectful interactions with other teams and participants.
-Failure to adhere to these guidelines will result in penalties, including negative scores and potential disqualification from a specific test or even from the entire competition
+Failure to adhere to these guidelines will result in penalties, including negative scores and potential disqualification from the entire competition
 
 ## Technical Rules 
-- Before using the robots the Risk Assessment needs to be signed and agreed by everyone. Robots can be dangerous and cause injuries so please carefully follow the instructions of the organisers.
+<<<<<<< HEAD
+- Before using the robots the Risk Assessment needs to be reviewed and understood by everyone. Robots can be dangerous and cause injuries so please carefully follow the instructions of the organisers.
 - Care must be taken when controlling the robots. The robots will be slowed down to reduce the risk of collision. Collisions which could have been avoided will results in the team being disqualified from the competition. 
 - ROS shall be used to control the robots and gripper. Instructions will be provided on the day on how to control the robots and grippers. However, if you have never used ROS before, you might find this resources useful.
+=======
+- Before using the robots the Risk Assessment needs to be signed and agreed by everyone. Robots can be dangerous and cause injuries so please carefully follow the instructions of the organisers.
+- Care must be taken when controlling the robots. The robots will be slowed down to reduce the risk of collision. Collisions which could have been avoided will result in the team being disqualified from the competition. 
+- ROS shall be used to control the robots, grippers, and cameras. Instructions will be provided on the day on how to control the robots and grippers. However, if you have never used ROS before, you might find this resources useful.
+>>>>>>> e050708a374e14ab5333abbe0ab7b7735882c5b0
   - [ROS Basics Tutorial](https://www.youtube.com/watch?v=Qk4vLFhvfbI&list=PLLSegLrePWgIbIrA4iehUQ-impvIXdd9Q)
   - [Moveit! Tutorial - python](http://docs.ros.org/en/melodic/api/moveit_tutorials/html/doc/move_group_python_interface/move_group_python_interface_tutorial.html)
+  - [OpenCV for robotics](https://www.youtube.com/watch?v=mVOaMYK6dh0)
+  - [OpenCV and Python](https://www.youtube.com/watch?v=oXlwWbU8l2o)
 - You can use any language supported by ROS but we reccomend using python as it requires the least amount of setting up
 - If you are using your own machine please follow the instructions below to [Set up your Ubuntu Machine](docs/MachineSetup)
 
-
+## Time Table
+<p align ="centre">
+<img src="docs/img/TimeTable.png">
+</p>
