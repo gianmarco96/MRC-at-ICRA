@@ -26,13 +26,13 @@ Failure to adhere to these guidelines will result in penalties, including negati
 ## Technical Rules 
 - Before using the robots the Risk Assessment needs to be reviewed and understood by everyone. Robots can be dangerous and cause injuries so please carefully follow the instructions of the organisers.
 - Care must be taken when controlling the robots. The robots will be slowed down to reduce the risk of collision. Collisions which could have been avoided will results in the team being disqualified from the competition. 
-- ROS shall be used to control the robots and gripper. Instructions will be provided on the day on how to control the robots and grippers. However, if you have never used ROS before, you might find this resources useful.
+- ROS shall be used to control the robots and gripper. Instructions will be provided on the day on how to control the robots and grippers. However, if you have never used ROS before, you might find these resources useful.
   - [ROS Basics Tutorial](https://www.youtube.com/watch?v=Qk4vLFhvfbI&list=PLLSegLrePWgIbIrA4iehUQ-impvIXdd9Q)
   - [Moveit! Tutorial - python](http://docs.ros.org/en/melodic/api/moveit_tutorials/html/doc/move_group_python_interface/move_group_python_interface_tutorial.html)
   - [OpenCV for robotics](https://www.youtube.com/watch?v=mVOaMYK6dh0)
   - [OpenCV and Python](https://www.youtube.com/watch?v=oXlwWbU8l2o)
 - You can use any language supported by ROS but we reccomend using python as it requires the least amount of setting up
-- If you are using your own machine please follow the instructions below to [Set up your Ubuntu Machine](docs/MachineSetup)
+- If you are using your own machine please follow the instructions below to [Set up your Ubuntu Machine](docs/MachineSetup.md)
 
 ## Time Table
 <p align ="centre">
