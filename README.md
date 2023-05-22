@@ -32,7 +32,12 @@ Failure to adhere to these guidelines will result in penalties, including negati
   - [OpenCV for robotics](https://www.youtube.com/watch?v=mVOaMYK6dh0)
   - [OpenCV and Python](https://www.youtube.com/watch?v=oXlwWbU8l2o)
 - You can use any language supported by ROS but we reccomend using python as it requires the least amount of setting up
-- If you are using your own machine please follow the instructions below to [Set up your Ubuntu Machine](docs/MachineSetup.md)
+- If you are using your own machine please follow the instructions below to [Set up your Ubuntu Machine](docs/MachineSetup.md). 
+- If you instead want to use a Virtual Machine follow [this guide](docs/VM.md) 
+
+## Day 1 setup instruction
+Here you can find instructions to set up the environment during day 1!
+[Day 1 set up guide](docs/Day1Setup.md)
 
 ## Time Table
 <p align ="centre">
