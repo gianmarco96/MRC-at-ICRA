@@ -54,7 +54,7 @@ git clone https://github.com/gianmarco96/MRC-at-ICRA
 ```
 This is optional but we would suggest removing the unnecessary files:
 ```
-mv MRC-at-ICRA/iiwa_stack-master/ .
+mv ~/MRC-at-ICRA/iiwa_stack-master/ .
 rm -fr MRC-at-ICRA/
 ```
 Now you can build the worksapce
