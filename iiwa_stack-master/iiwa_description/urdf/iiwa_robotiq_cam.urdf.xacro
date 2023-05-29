@@ -30,7 +30,7 @@
         </geometry>
       </visual>
       <collision>
-        <origin xyz="0 0 0.01" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh 
           filename="package://iiwa_description/meshes/camera_link.STL"/>
@@ -43,7 +43,7 @@
   <joint name="camera_to_iiwa" type="fixed">
     <parent link="iiwa_link_ee"/>
     <child link="camera_link"/>
-    <origin xyz="0 0 0.010" rpy="1.5708 0 0"/>
+    <origin xyz="0 0 0.04" rpy="1.5708 0 0"/>
   </joint>
 
   <joint name="camera_to_robotiq" type="fixed">
