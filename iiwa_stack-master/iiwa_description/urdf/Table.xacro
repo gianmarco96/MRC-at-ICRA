@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="table">
+<xacro:macro name="table" params="parent hardware_interface robot_name *origin">
+
+  
+
+  <joint name="world_to_base" type="fixed">
+    <parent link="${parent}"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+  </joint>
+    
+  <link name="base_link"/>
+
+  <joint name="base_to_table" type="fixed">
+    <parent link="base_link"/>
+    <child link="table_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="table_link">
+    <inertial>
+      <origin
+        xyz="-0.41999987758599 0.441517808644207 -0.00999999708538072"
+        rpy="0 0 0" />
+      <mass
+        value="61.7576369744611" />
+      <inertia
+        ixx="9.36626879067317"
+        ixy="3.3397646292658E-06"
+        ixz="-6.17756606248572E-08"
+        iyy="10.4949464928445"
+        iyz="7.95182066201114E-08"
+        izz="13.8602771741833" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://iiwa_description/meshes/table_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://iiwa_description/meshes/table_link.STL" />
+      </geometry>
+    </collision>
+  </link>    
+
+
+</xacro:macro>
+</robot>

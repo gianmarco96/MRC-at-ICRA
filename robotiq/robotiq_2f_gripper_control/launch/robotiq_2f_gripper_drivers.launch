@@ -1,0 +1,9 @@
+<launch>
+  <arg name="sim" default="true" />
+
+  <group ns="iiwa">
+    <node pkg="robotiq_2f_gripper_control" type="Robotiq2FGripperRtuNode" name="Robotiq2FGripperRtuNode" output="screen" unless="$(arg sim)" />
+    <node pkg="robotiq_2f_gripper_control" type="Robotiq2FGripperSimpleController.py" name="Robotiq2FGripperSimpleController" output="screen" />
+    <node pkg="robotiq_2f_gripper_control" type="Robotiq2FGripperJointState.py" name="Robotiq2FGripperJointState" output="screen" />
+  </group>
+</launch>

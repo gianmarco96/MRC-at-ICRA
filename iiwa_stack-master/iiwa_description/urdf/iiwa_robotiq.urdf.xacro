@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="iiwa_robotiq">
+  
+  <xacro:include filename="$(find iiwa_description)/urdf/materials.xacro" />
+  <xacro:include filename="$(find iiwa_description)/urdf/iiwa7.xacro"/>
+  <xacro:include filename="$(find iiwa_description)/urdf/Table.xacro"/>
+  <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model.xacro"/>
+  <xacro:arg name="hardware_interface" default="PositionJointInterface"/>
+  <xacro:arg name="origin_xyz" default="0 0 0"/>
+  <xacro:arg name="origin_rpy" default="0 0 0"/>
+  <xacro:arg name="robot_name" default="iiwa"/>
+
+	
+  <link name="world"/>
+
+  <xacro:table hardware_interface="$(arg hardware_interface)" robot_name="Table" parent="world">
+    <origin xyz="$(arg origin_xyz)" rpy="$(arg origin_rpy)" />
+  </xacro:table>
+
+  <xacro:iiwa7 hardware_interface="$(arg hardware_interface)" robot_name="iiwa" parent="table_link">
+    <origin xyz="0 0 0" rpy="1.5708 2.87979 0" />
+  </xacro:iiwa7>  
+
+    <link name="robotiq_coupler">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh 
+          filename="package://robotiq_2f_85_gripper_visualization/meshes/visual/robotiq_gripper_coupling.stl"
+          scale = "0.001 0.001 0.001"/>
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh 
+          filename="package://robotiq_2f_85_gripper_visualization/meshes/visual/robotiq_gripper_coupling.stl"
+          scale = "0.001 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+<joint name="robotiq_to_iiwa" type="fixed">
+      <parent link="iiwa_link_ee"/>
+      <child link="robotiq_coupler"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint>
+
+  <!-- <xacro:robotiq_arg2f_85_model></xacro:robotiq_arg2f_85_model> -->
+
+  <joint name="coupler2robotiq" type="fixed">
+    <parent link="robotiq_coupler"/>
+    <child link="robotiq_arg2f_base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+</robot>

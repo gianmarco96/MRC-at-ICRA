@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: iiwa_description
+    relative_path: urdf/iiwa_robotiq.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/iiwa_robotiq.srdf
+  CONFIG:
+    author_name: Gianmarco Pisanelli
+    author_email: g.pisanelli@amrc.co.uk
+    generated_timestamp: 1685298279

@@ -6,20 +6,33 @@
   <arg name="hardware_interface" default="PositionJointInterface"/>
   <arg name="robot_name" default="iiwa"/>
   <arg name="model" default="iiwa14"/>
+  <arg name="gripper" default="robotiq"/>
+
 
   <!-- The name of the parameter under which the URDF is loaded -->
   <arg name="robot_description" default="robot_description"/>
 
   <!-- Loads the URDF with the given hardware interface and robot name into the ROS Parameter Server -->
   <group if="$(arg load_robot_description)">
-    <include file="$(find iiwa_description)/launch/$(arg model)_upload.launch">
+    <include file="$(find iiwa_description)/launch/$(arg gripper)_upload.launch">
       <arg name="hardware_interface" value="$(arg hardware_interface)"/>
       <arg name="robot_name" value="$(arg robot_name)" />
     </include>
   </group>
 
   <!-- The semantic description that corresponds to the URDF -->
-  <param name="$(arg robot_description)_semantic" textfile="$(find iiwa_moveit)/config/$(arg model).srdf" />
+  <group if="$(eval gripper == 'zimmer')">
+  <param name="$(arg robot_description)_semantic" textfile="$(find iiwa_zimmer_moveit_config)/config/iiwa_$(arg gripper).srdf" />
+  </group>
+
+  <group if="$(eval gripper == 'robotiq')">
+  <param name="$(arg robot_description)_semantic" textfile="$(find iiwa_robotiq_moveit_config)/config/iiwa_$(arg gripper).srdf" />
+  </group>
+
+  <group if="$(eval gripper == 'robotiq_cam')">
+  <param name="$(arg robot_description)_semantic" textfile="$(find iiwa_robotiq_cam_moveit_config)/config/iiwa_$(arg gripper).srdf" />
+  </group>
+  
   
   <!-- Load updated joint limits (override information from URDF) -->
   <group ns="$(arg robot_description)_planning">
